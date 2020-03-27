@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebApplicationFinal.Models;
+using WebApplicationFinal.Models.ViewModels;
 
 namespace WebApplicationFinal.Controllers
 {
@@ -17,7 +17,7 @@ namespace WebApplicationFinal.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Aplicativo web do Maxwell, hello word.";
 
             return View();
         }
