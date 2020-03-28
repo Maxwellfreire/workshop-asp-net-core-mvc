@@ -37,7 +37,8 @@ namespace WebApplicationFinal
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<WebApplicationFinalContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("WebApplicationFinalContext")));
+                    options.UseMySql(Configuration.GetConnectionString("WebApplicationFinalContext"), builder =>
+                        builder.MigrationsAssembly("WebApplicationFinal")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
