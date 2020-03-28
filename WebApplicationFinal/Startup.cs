@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationFinal.Models;
 using WebApplicationFinal.Data;
+using WebApplicationFinal.Services;
 
 namespace WebApplicationFinal
 {
@@ -38,6 +39,7 @@ namespace WebApplicationFinal
                         builder.MigrationsAssembly("WebApplicationFinal")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<VendedorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
