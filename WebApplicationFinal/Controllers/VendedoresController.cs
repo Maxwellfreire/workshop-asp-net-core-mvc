@@ -29,7 +29,7 @@ namespace WebApplicationFinal.Controllers
         public IActionResult Create()
         {
             var departamentos = _departamentoService.FindAll();
-            var viewModels = new VendedorFormViewModel {Departamentos = departamentos };
+            var viewModels = new VendedorFormViewModel { Departamentos = departamentos };
             return View(viewModels);
         }
 
@@ -62,6 +62,22 @@ namespace WebApplicationFinal.Controllers
         {
             _vendedorService.Remove(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details(int? id) {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _vendedorService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+
         }
     }
 }
