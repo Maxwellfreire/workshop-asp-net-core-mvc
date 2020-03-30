@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplicationFinal.Models;
 
 namespace WebApplicationFinal.Migrations
 {
     [DbContext(typeof(WebApplicationFinalContext))]
-    partial class WebApplicationFinalContextModelSnapshot : ModelSnapshot
+    [Migration("20200330160343_DepartmentForeignK")]
+    partial class DepartmentForeignK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
