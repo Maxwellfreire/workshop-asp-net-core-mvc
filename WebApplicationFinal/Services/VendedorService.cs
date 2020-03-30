@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationFinal.Models;
 using Microsoft.EntityFrameworkCore;
+using WebApplicationFinal.Services.Exceptions;
 
 namespace WebApplicationFinal.Services
 {
@@ -43,6 +44,25 @@ namespace WebApplicationFinal.Services
             var obj = _context.Vendedor.Find(id);
             _context.Vendedor.Remove(obj);
             _context.SaveChanges();
+
+        }
+
+        public void Update(Vendedor obj)
+        {
+            if (!_context.Vendedor.Any(x => x.Id == obj.Id)) {
+
+                throw new NotFoundException("Id não existe");
+
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
 
         }
 
