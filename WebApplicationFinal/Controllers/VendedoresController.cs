@@ -5,17 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationFinal.Services;
 using WebApplicationFinal.Models;
+using WebApplicationFinal.Models.ViewModels;
 
 namespace WebApplicationFinal.Controllers
 {
     public class VendedoresController : Controller
     {
         private readonly VendedorService _vendedorService;
+        private readonly DepartamentoService _departamentoService;
 
-        public VendedoresController(VendedorService vendedorService)
+        public VendedoresController(VendedorService vendedorService, DepartamentoService departamentoService)
         {
 
             _vendedorService = vendedorService;
+            _departamentoService = departamentoService;
         }
         public IActionResult Index()
         {
@@ -25,7 +28,9 @@ namespace WebApplicationFinal.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departamentos = _departamentoService.FindAll();
+            var viewModels = new VendedorFormViewModel {Departamentos = departamentos };
+            return View(viewModels);
         }
 
         [HttpPost]
