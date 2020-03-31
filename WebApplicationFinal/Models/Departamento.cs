@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationFinal.Models
 {
@@ -9,6 +10,7 @@ namespace WebApplicationFinal.Models
 
         public int Id { get; set; }
 
+        [Display(Name = "Nome")]
         public string Name { get; set; }
         public ICollection<Vendedor> Vendedor { get; set; } = new List<Vendedor>();
 

@@ -22,5 +22,6 @@ namespace WebApplicationFinal.Services
             return await _context.Departamento.OrderBy(x => x.Name).ToListAsync();
         }
 
+
     }
 }
